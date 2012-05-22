@@ -1,0 +1,97 @@
+<html>
+<head>
+<SCRIPT language = JavaScript>
+
+var func = "";
+var Memory = Number(0);
+var Current = Number(0);
+
+function add() {
+	Memory = Number(document.frmOne.display.value);
+	func = "add";
+}
+
+function subtract() {
+	Memory = Number(document.frmOne.display.value);
+	func = "subtract";
+}
+
+function multiply() {
+	Memory = Number(document.frmOne.display.value);
+	func = "multiply";
+}
+
+function divide() {
+	Memory = Number(document.frmOne.display.value);
+	func = "divide";
+}
+
+
+function calculate() {
+	if (func === "add") {
+		Current = Memory + Current;
+	}
+	if (func === "subtract") {
+		Current = Memory - Current;
+	}
+	if (func === "multiply") {
+		Current = Memory * Current;
+	}
+	if (func === "divide") {
+		Current = Memory / Current;
+	}
+	
+	func = "";
+	document.frmOne.display.value = Current;
+}
+
+function cancel() {
+	clearDisplay();
+	Memory = Number(0);
+	Current = Number(0);
+}
+
+function writeToDisplay(num) {
+	if (func != ""){
+		clearDisplay();
+	}
+	document.frmOne.display.value += num;
+	Current = Number(document.frmOne.display.value);
+}
+
+function clearDisplay() {
+	document.frmOne.display.value = "";
+}
+
+</SCRIPT>
+</head>
+
+<form name = frmOne>
+
+<input type="text" name="display" size="20" value="">
+<br/>
+<br/>
+<input type="button" name="numkey1" value="1" onclick=writeToDisplay(1)>
+<input type="button" name="numkey2" value="2" onclick=writeToDisplay(2)>
+<input type="button" name="numkey3" value="3" onclick=writeToDisplay(3)>
+<br/>
+<input type="button" name="numkey4" value="4" onclick=writeToDisplay(4)>
+<input type="button" name="numkey5" value="5" onclick=writeToDisplay(5)>
+<input type="button" name="numkey6" value="6" onclick=writeToDisplay(6)>
+<br/>
+<input type="button" name="numkey7" value="7" onclick=writeToDisplay(7)>
+<input type="button" name="numkey8" value="8" onclick=writeToDisplay(8)>
+<input type="button" name="numkey9" value="9" onclick=writeToDisplay(9)>
+<br/>
+<input type="button" name="numkey0" value="0" onclick=writeToDisplay(0)>
+<br/>
+<br/>
+<input type="button" name="addBtn" value="+" onclick=add()>
+<input type="button" name="subtractBtn" value="-" onclick=subtract()>
+<input type="button" name="multiplyBtn" value="*" onclick=multiply()>
+<input type="button" name="divideBtn" value="/" onclick=divide()>
+<input type="button" name="equalsBtn" value="=" onclick=calculate()>
+<input type="button" name="clearBtn" value="C" onclick=cancel()>
+
+</form>
+</html>
