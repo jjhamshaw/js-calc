@@ -1,97 +1,101 @@
-<html>
-<head>
-<SCRIPT language = JavaScript>
+<html> 
+<head> 
+<SCRIPT language = JavaScript> 
 
-var func = "";
-var Memory = Number(0);
-var Current = Number(0);
+var func = ""; 
+var Memory = Number(0); 
+var Current = Number(0); 
+var shouldAppendTheNumber = false; 
 
-function add() {
-	Memory = Number(document.frmOne.display.value);
-	func = "add";
-}
+function cancel() { 
+        document.frmOne.display.value = "0"; 
+  func = ""; 
+        Current = Number(0); 
+} 
 
-function subtract() {
-	Memory = Number(document.frmOne.display.value);
-	func = "subtract";
-}
+function add() { 
+        Memory = Current; 
+        func = "add"; 
+  shouldAppendTheNumber = false; 
+} 
 
-function multiply() {
-	Memory = Number(document.frmOne.display.value);
-	func = "multiply";
-}
+function subtract() { 
+        Memory = Number(document.frmOne.display.value); 
+        func = "subtract"; 
+  shouldAppendTheNumber = false; 
+} 
 
-function divide() {
-	Memory = Number(document.frmOne.display.value);
-	func = "divide";
-}
+function multiply() { 
+        Memory = Number(document.frmOne.display.value); 
+        func = "multiply"; 
+  shouldAppendTheNumber = false; 
+} 
+
+function divide() { 
+        Memory = Number(document.frmOne.display.value); 
+        func = "divide"; 
+  shouldAppendTheNumber = false; 
+} 
 
 
-function calculate() {
-	if (func === "add") {
-		Current = Memory + Current;
-	}
-	if (func === "subtract") {
-		Current = Memory - Current;
-	}
-	if (func === "multiply") {
-		Current = Memory * Current;
-	}
-	if (func === "divide") {
-		Current = Memory / Current;
-	}
-	
-	func = "";
-	document.frmOne.display.value = Current;
-}
+function calculate() { 
+        if (func === "add") { 
+                Current = Memory + Current; 
+        } 
+        if (func === "subtract") { 
+                Current = Memory - Current; 
+        } 
+        if (func === "multiply") { 
+                Current = Memory * Current; 
+        } 
+        if (func === "divide") { 
+                Current = Memory / Current; 
+        } 
 
-function cancel() {
-	clearDisplay();
-	Memory = Number(0);
-	Current = Number(0);
-}
+        document.frmOne.display.value = Current; 
+  shouldAppendTheNumber = false; 
+} 
 
-function writeToDisplay(num) {
-	if (func != ""){
-		clearDisplay();
-	}
-	document.frmOne.display.value += num;
-	Current = Number(document.frmOne.display.value);
-}
+function numKey(num) { 
+        if (shouldAppendTheNumber) { 
+          document.frmOne.display.value += num; 
+    Current = Number(document.frmOne.display.value); 
+    } 
+        else { 
+    document.frmOne.display.value = num; 
+    shouldAppendTheNumber = true; 
+  } 
+} 
 
-function clearDisplay() {
-	document.frmOne.display.value = "";
-}
+</SCRIPT> 
+</head> 
 
-</SCRIPT>
-</head>
+<form name = frmOne> 
 
-<form name = frmOne>
+<input type="text" name="display" size="20" value="0"> 
+<br/> 
+<br/> 
+<input type="button" name="numkey1" value="1" onclick=numKey(1)> 
+<input type="button" name="numkey2" value="2" onclick=numKey(2)> 
+<input type="button" name="numkey3" value="3" onclick=numKey(3)> 
+<br/> 
+<input type="button" name="numkey4" value="4" onclick=numKey(4)> 
+<input type="button" name="numkey5" value="5" onclick=numKey(5)> 
+<input type="button" name="numkey6" value="6" onclick=numKey(6)> 
+<br/> 
+<input type="button" name="numkey7" value="7" onclick=numKey(7)> 
+<input type="button" name="numkey8" value="8" onclick=numKey(8)> 
+<input type="button" name="numkey9" value="9" onclick=numKey(9)> 
+<br/> 
+<input type="button" name="numkey0" value="0" onclick=numKey(0)> 
+<br/> 
+<br/> 
+<input type="button" name="addBtn" value="+" onclick=add()> 
+<input type="button" name="subtractBtn" value="-" onclick=subtract()> 
+<input type="button" name="multiplyBtn" value="*" onclick=multiply()> 
+<input type="button" name="divideBtn" value="/" onclick=divide()> 
+<input type="button" name="equalsBtn" value="=" onclick=calculate()> 
+<input type="button" name="clearBtn" value="C" onclick=cancel()> 
 
-<input type="text" name="display" size="20" value="">
-<br/>
-<br/>
-<input type="button" name="numkey1" value="1" onclick=writeToDisplay(1)>
-<input type="button" name="numkey2" value="2" onclick=writeToDisplay(2)>
-<input type="button" name="numkey3" value="3" onclick=writeToDisplay(3)>
-<br/>
-<input type="button" name="numkey4" value="4" onclick=writeToDisplay(4)>
-<input type="button" name="numkey5" value="5" onclick=writeToDisplay(5)>
-<input type="button" name="numkey6" value="6" onclick=writeToDisplay(6)>
-<br/>
-<input type="button" name="numkey7" value="7" onclick=writeToDisplay(7)>
-<input type="button" name="numkey8" value="8" onclick=writeToDisplay(8)>
-<input type="button" name="numkey9" value="9" onclick=writeToDisplay(9)>
-<br/>
-<input type="button" name="numkey0" value="0" onclick=writeToDisplay(0)>
-<br/>
-<br/>
-<input type="button" name="addBtn" value="+" onclick=add()>
-<input type="button" name="subtractBtn" value="-" onclick=subtract()>
-<input type="button" name="multiplyBtn" value="*" onclick=multiply()>
-<input type="button" name="divideBtn" value="/" onclick=divide()>
-<input type="button" name="equalsBtn" value="=" onclick=calculate()>
-<input type="button" name="clearBtn" value="C" onclick=cancel()>
-
-</form>
+</form> 
 </html>
